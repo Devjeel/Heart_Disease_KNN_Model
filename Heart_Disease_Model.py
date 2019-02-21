@@ -23,6 +23,14 @@ print(y.shape)
 from sklearn.model_selection import train_test_split
 train_X, test_X, train_y, test_y = train_test_split(X, y, test_size=0.3, random_state=0)
 
+# Feature Scaling
+from sklearn.preprocessing import StandardScaler
+sc_X = StandardScaler()
+train_X = sc_X.fit_transform(train_X)
+test_X = sc_X.transform(test_X)
+sc_y = StandardScaler()
+train_y = sc_y.fit_transform(train_y)
+
 # KNeighborsClassifier Training Model
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier(n_neighbors=1)
@@ -33,7 +41,8 @@ test_prediction = knn.predict(test_X)
 
 # Accuracy Score
 from sklearn import metrics
-print(metrics.accuracy_score(test_y, test_prediction))  # OUTPUT: 0.5494505494505495
+print("AUC score: {:.5f}".format(metrics.accuracy_score(test_y, test_prediction)))  # OUTPUT: AUC score: 0.81319
+print("MAE score: {:.5f}".format(metrics.mean_absolute_error(test_y, test_prediction)))  # OUTPUT: MAE score: 0.18681
 
 # Plotting best K value for KNN
 v = []
@@ -49,8 +58,10 @@ for i in k_range:
 plt.plot(k_range, v, c='orange')
 plt.show()
 
+
 # Training model with best K value
-knn = KNeighborsClassifier(n_neighbors=18)
+knn = KNeighborsClassifier(n_neighbors=6)
 knn.fit(train_X, train_y)
 test_prediction = knn.predict(test_X)
-print(metrics.accuracy_score(test_y, test_prediction))  # OUTPUT: 0.7472527472527473
+print("AUC score: {:.5f}".format(metrics.accuracy_score(test_y, test_prediction)))  # OUTPUT: AUC score: 0.86813
+print("MAE score: {:.5f}".format(metrics.mean_absolute_error(test_y, test_prediction)))  # OUTPUT: MAE score: 0.13187
