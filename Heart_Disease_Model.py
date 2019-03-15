@@ -1,6 +1,10 @@
 # Importing libraries
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import pickle
+import json
+import requests
 
 # Load Dataset
 dataset = pd.read_csv('heart.csv')
@@ -63,5 +67,9 @@ plt.show()
 knn = KNeighborsClassifier(n_neighbors=6)
 knn.fit(train_X, train_y)
 test_prediction = knn.predict(test_X)
+
+# Dumping file to pickle to make python instances
+pickle.dump(knn, open('model.pkl', 'wb'))
+
 print("AUC score: {:.5f}".format(metrics.accuracy_score(test_y, test_prediction)))  # OUTPUT: AUC score: 0.86813
 print("MAE score: {:.5f}".format(metrics.mean_absolute_error(test_y, test_prediction)))  # OUTPUT: MAE score: 0.13187
