@@ -1,3 +1,5 @@
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## To run this code on your machine
 
 Clone or download this project 
