@@ -10,6 +10,10 @@ use this command to clone: `git clone https://github.com/Devjeel/Heart_Disease_K
 
 now run the flask server `server.py` file and trigger the JSON input with `request.py` file.
 
+Update POST request to send your JSON data from [here](https://github.com/Devjeel/Heart_Disease_KNN_Model/blob/b2b4bce77d57adaebfc75cdc8a33ca526ab08309/request.py#L10)
+
+NOTE: you might need to update the URL to your running flask server [here](https://github.com/Devjeel/Heart_Disease_KNN_Model/blob/b2b4bce77d57adaebfc75cdc8a33ca526ab08309/request.py#L8)
+
 ## Algorithm
 Algorithm used: Scikit-Learn, Classification, K-NearestNeighbors
 
